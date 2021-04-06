@@ -13,12 +13,14 @@ class Timer {
   }
 
   get time() {
-
+    return this.currentTime;
   }
 
   set time(time) {
     // check if time input is valid
-    timeConversion(time);
+    let conversion = timeConversion(time);
+    if (!conversion) throw new Error('Please enter a valid number');
+    this._time = conversion;
   }
 
 
