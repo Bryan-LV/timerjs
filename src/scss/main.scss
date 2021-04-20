@@ -1,1 +1,47 @@
 @use './normalize.scss'as *;
+
+
+.timer-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+  padding-top: 2vh;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  font-size: clamp;
+}
+
+
+.btn-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  margin: 10px;
+}
+
+input[type="number"] {
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  font-size: 20px;
+  border: none;
+}
+
+input[type="number"]:focus {
+  border: 1px solid teal;
+  outline: none;
+}

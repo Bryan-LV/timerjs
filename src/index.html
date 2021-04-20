@@ -8,11 +8,17 @@
   <link rel="stylesheet" href="scss/main.scss">
 </head>
 <body>
-  <h1 class="">TimerJS</h1>
-  <div class="">
-    <input type="number" name="time" id="timeInput">
-    <button class="btn" id="start">Start</button>
-    <button class="btn" id="pause">Pause</button>
+
+  <input type="text" id="timer-name">
+  <button id="createTimer">Create Timer</button>
+
+  <div class="timer-container">
+    <h1 class="title">TimerJS</h1>
+    <input type="number" name="time input" id="timeInput">
+    <div class="btn-container">
+      <button class="btn" id="start">Start</button>
+      <button class="btn" id="pause">Pause</button>
+    </div>
   </div>
   <script src="createTimer.js"></script>
 </body>

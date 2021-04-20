@@ -1,10 +1,11 @@
 import timeConversion from './timeConversion'
 
 class Timer {
-  constructor(time) {
-    // interval variable that keeps users time input
+  constructor() {
+    // users input
+    this.time = null;
+    // internal time used to count down
     this._time = null;
-    this.currentTime = time;
 
     // states of timer
     this.hasStarted = false;
@@ -12,43 +13,47 @@ class Timer {
     this.isPaused = true;
   }
 
-  get time() {
-    return this.currentTime;
+  get curTime() {
+    return this._time;
   }
 
-  set time(time) {
-    // check if time input is valid
-    let conversion = timeConversion(time);
-    if (!conversion) throw new Error('Please enter a valid number');
-    this._time = conversion;
+  set curTime(time) {
+    if (typeof time !== 'number' || !Number.isFinite(time) || time - 0 === 0) {
+      return false;
+    }
+    this._time = this.time = time;
   }
-
 
   tick() {
-    this.currentTime -= 1;
+    this._time -= 1;
     // every second we want it to count down
     this.intervalID = setInterval(() => {
-      this.currentTime -= 1;
-    }, 1000);
 
+      if (this._time === 0) {
+        clearInterval(this.intervalID)
+      }
+
+      this._time -= 1;
+
+    }, 1000);
   }
 
   start() {
-    // should start the timer immediately from current time 
     this.hasStarted = true;
-
     this.tick();
-
   }
 
   pause() {
     // should pause the timer but not clear the time
-    if (this.hasStarted) this.hasStarted = false;
+    this.hasStarted = false;
     this.isPaused = true;
+
+    clearInterval(this.intervalID)
   }
 
   restart() {
     // should start the timer from input given
+    this._time = this.time;
   }
 }
 
